@@ -60,6 +60,7 @@
     <sys:String x:Key="Btn_LinkTlp">Link .tlp…</sys:String>
     <sys:String x:Key="Btn_Unlink">Unlink</sys:String>
     <sys:String x:Key="Btn_Save">Save</sys:String>
+    <sys:String x:Key="Btn_SaveConnect">Save &amp; Connect</sys:String>
     <sys:String x:Key="Btn_Cancel">Cancel</sys:String>
     <sys:String x:Key="Msg_NeedName">Please enter a name.</sys:String>
     <sys:String x:Key="Msg_NeedHost">Please enter a host, or link a .tlp.</sys:String>

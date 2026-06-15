@@ -16,6 +16,9 @@ public partial class ProfileEditWindow : Window
     private bool _suppress;          // ignore TextChanged logic during programmatic edits
     private bool _nameFollowsHost;   // while true, Name mirrors Host (until the user edits Name)
 
+    /// <summary>True when the user chose "Save &amp; Connect" rather than plain Save.</summary>
+    public bool ConnectAfterSave { get; private set; }
+
     /// <summary>Working copy is mutated in place; caller passes a clone for "edit".</summary>
     public ProfileEditWindow(Profile profile, string bvSshPath, bool isNew)
     {
@@ -30,7 +33,12 @@ public partial class ProfileEditWindow : Window
 
         _nameFollowsHost = isNew;
         if (isNew)
+        {
+            SaveConnectBtn.Visibility = Visibility.Visible;
+            SaveConnectBtn.IsDefault = true;   // Enter on a new profile = Save & Connect
+            SaveBtn.IsDefault = false;
             Loaded += (_, _) => HostBox.Focus();
+        }
     }
 
     private void HostBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -172,6 +180,13 @@ public partial class ProfileEditWindow : Window
     private void Ok_Click(object sender, RoutedEventArgs e)
     {
         if (!TryCommit()) return;
+        DialogResult = true;
+    }
+
+    private void SaveAndConnect_Click(object sender, RoutedEventArgs e)
+    {
+        if (!TryCommit()) return;
+        ConnectAfterSave = true;
         DialogResult = true;
     }
 

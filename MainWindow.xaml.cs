@@ -176,6 +176,8 @@ public partial class MainWindow : Window
             _profiles.Add(draft);
             Persist();
             Grid.SelectedItem = draft;
+            if (dlg.ConnectAfterSave)
+                ConnectSelected();
         }
     }
 

@@ -60,6 +60,7 @@
     <sys:String x:Key="Btn_LinkTlp">关联 .tlp…</sys:String>
     <sys:String x:Key="Btn_Unlink">取消关联</sys:String>
     <sys:String x:Key="Btn_Save">保存</sys:String>
+    <sys:String x:Key="Btn_SaveConnect">保存并连接</sys:String>
     <sys:String x:Key="Btn_Cancel">取消</sys:String>
     <sys:String x:Key="Msg_NeedName">请填写名称。</sys:String>
     <sys:String x:Key="Msg_NeedHost">请填写主机，或关联一个 .tlp。</sys:String>
