@@ -1,0 +1,83 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- MainWindow toolbar / columns -->
+    <sys:String x:Key="Btn_New">新建</sys:String>
+    <sys:String x:Key="Btn_Edit">编辑</sys:String>
+    <sys:String x:Key="Btn_Delete">删除</sys:String>
+    <sys:String x:Key="Btn_Connect">连接</sys:String>
+    <sys:String x:Key="Btn_OpenInBitvise">在 Bitvise 中打开</sys:String>
+    <sys:String x:Key="Btn_Settings">设置…</sys:String>
+    <sys:String x:Key="Lbl_Search">搜索:</sys:String>
+
+    <sys:String x:Key="Col_Name">名称</sys:String>
+    <sys:String x:Key="Col_Group">分组</sys:String>
+    <sys:String x:Key="Col_Host">主机</sys:String>
+    <sys:String x:Key="Col_Port">端口</sys:String>
+    <sys:String x:Key="Col_User">用户</sys:String>
+    <sys:String x:Key="Col_Auth">认证</sys:String>
+    <sys:String x:Key="Col_Note">备注</sys:String>
+
+    <!-- Status bar -->
+    <sys:String x:Key="Status_Format">{0} 个 profile   |   BvSsh: {1}   |   库: {2}</sys:String>
+    <sys:String x:Key="Status_BvNotFound">未找到（请在「设置」中指定）</sys:String>
+
+    <!-- MainWindow messages -->
+    <sys:String x:Key="Msg_SelectFirst">请先选择一个 profile。</sys:String>
+    <sys:String x:Key="Title_Info">提示</sys:String>
+    <sys:String x:Key="Confirm_Delete">删除「{0}」？&#10;（不会删除关联的 .tlp 文件本身）</sys:String>
+    <sys:String x:Key="Title_ConfirmDelete">确认删除</sys:String>
+    <sys:String x:Key="Msg_BvMissing">未找到 BvSsh.exe，请先在「设置」中指定 Bitvise SSH Client 的路径。</sys:String>
+    <sys:String x:Key="Title_BvMissing">缺少 Bitvise</sys:String>
+    <sys:String x:Key="Install_Prompt">未检测到 Bitvise SSH Client。&#10;&#10;本程序依赖它来建立 SSH 连接，请先安装。&#10;&#10;是否现在打开 Bitvise 官方下载页面？&#10;（若已安装在非默认位置，可点「否」后在「设置…」中手动指定 BvSsh.exe。）</sys:String>
+    <sys:String x:Key="Install_Title">未找到 Bitvise</sys:String>
+    <sys:String x:Key="Title_CannotConnect">无法连接</sys:String>
+    <sys:String x:Key="Title_CannotLaunchBitvise">无法启动 Bitvise</sys:String>
+    <sys:String x:Key="Title_CannotOpenBrowser">无法打开浏览器</sys:String>
+    <sys:String x:Key="Dlg_SelectBvSsh">选择 BvSsh.exe</sys:String>
+    <sys:String x:Key="Filter_BvSsh">BvSsh.exe|BvSsh.exe|可执行文件 (*.exe)|*.exe</sys:String>
+
+    <!-- ProfileEditWindow -->
+    <sys:String x:Key="EditTitle">编辑 Profile</sys:String>
+    <sys:String x:Key="Lbl_Name">名称</sys:String>
+    <sys:String x:Key="Lbl_Host">主机</sys:String>
+    <sys:String x:Key="Lbl_Port">端口</sys:String>
+    <sys:String x:Key="Lbl_User">用户名</sys:String>
+    <sys:String x:Key="Lbl_Auth">认证方式</sys:String>
+    <sys:String x:Key="Lbl_KeyLoc">密钥位置</sys:String>
+    <sys:String x:Key="Lbl_Group">分组</sys:String>
+    <sys:String x:Key="Lbl_Note">备注</sys:String>
+    <sys:String x:Key="Auth_Password">Password (连接时输入)</sys:String>
+    <sys:String x:Key="Auth_PublicKey">Public key</sys:String>
+    <sys:String x:Key="Auth_Kbdi">Keyboard-interactive</sys:String>
+    <sys:String x:Key="KeyLoc_Hint">a=任意 / g1=全局密钥1</sys:String>
+    <sys:String x:Key="Adv_Header">高级设定（隧道 / 端口转发 / 主机密钥等）</sys:String>
+    <sys:String x:Key="Adv_NotLinked">未关联 .tlp。点下方按钮在 Bitvise 中配置后另存为 profile，再「关联」回来。</sys:String>
+    <sys:String x:Key="Adv_Linked">已关联：{0}&#10;连接时将使用此 .tlp，名称之外的字段被它覆盖。</sys:String>
+    <sys:String x:Key="Btn_OpenInBitviseAdv">在 Bitvise 中打开…</sys:String>
+    <sys:String x:Key="Btn_LinkTlp">关联 .tlp…</sys:String>
+    <sys:String x:Key="Btn_Unlink">取消关联</sys:String>
+    <sys:String x:Key="Btn_Save">保存</sys:String>
+    <sys:String x:Key="Btn_Cancel">取消</sys:String>
+    <sys:String x:Key="Msg_NeedName">请填写名称。</sys:String>
+    <sys:String x:Key="Msg_NeedHost">请填写主机，或关联一个 .tlp。</sys:String>
+    <sys:String x:Key="Msg_PortRange">端口必须是 1–65535 的数字。</sys:String>
+    <sys:String x:Key="Msg_OpenedInBitvise">已在 Bitvise 中打开。配置好高级项后，在 Bitvise 里「Save profile as…」保存为 .tlp，&#10;回到本窗口点「关联 .tlp…」选中该文件即可。</sys:String>
+    <sys:String x:Key="Dlg_SelectProfile">选择 Bitvise profile</sys:String>
+    <sys:String x:Key="Filter_Profile">Bitvise profile (*.tlp;*.bscp)|*.tlp;*.bscp|所有文件 (*.*)|*.*</sys:String>
+
+    <!-- Username prompt -->
+    <sys:String x:Key="Username_Title">需要用户名</sys:String>
+    <sys:String x:Key="Username_Msg">此连接未设置用户名，请输入登录用的 SSH 用户名：</sys:String>
+    <sys:String x:Key="Username_Remember">记住到此 profile</sys:String>
+    <sys:String x:Key="Username_Empty">请输入用户名。</sys:String>
+    <sys:String x:Key="Btn_Confirm">确定</sys:String>
+
+    <!-- Misc -->
+    <sys:String x:Key="Default_NewProfile">新建连接</sys:String>
+
+    <!-- Language switch -->
+    <sys:String x:Key="Lang_Chinese">中文</sys:String>
+    <sys:String x:Key="Lang_English">English</sys:String>
+</ResourceDictionary>

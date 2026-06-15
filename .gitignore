@@ -1,0 +1,19 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+*.user
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.suo
+
+# Never commit Bitvise binaries — users install Bitvise SSH Client themselves
+BvSsh.exe
+stermc.exe
+stnlc.exe
+*.tlp
+*.bscp
+
+# Local app data / scratch
+_preview.png

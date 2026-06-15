@@ -1,0 +1,26 @@
+SSH Profile Launcher
+Copyright (c) 2026 Wanpeng Qian
+
+This product is licensed under the MIT License (see LICENSE).
+
+--------------------------------------------------------------------------------
+Third-party assets
+--------------------------------------------------------------------------------
+
+Application icon
+  The terminal glyph in Assets/app.ico (and Assets/icon256.png) is derived from
+  the "terminal" icon of Google Material Symbols.
+  Source:  https://github.com/google/material-design-icons
+  License: Apache License 2.0
+           https://www.apache.org/licenses/LICENSE-2.0
+
+--------------------------------------------------------------------------------
+Trademarks
+--------------------------------------------------------------------------------
+
+"Bitvise" and "Bitvise SSH Client" are trademarks of Bitvise Limited.
+This project is an independent, third-party tool. It is NOT affiliated with,
+endorsed by, or sponsored by Bitvise Limited. It does not include or
+redistribute any Bitvise software; it only invokes a copy of Bitvise SSH Client
+that the user has installed separately, via that software's documented
+command-line interface.

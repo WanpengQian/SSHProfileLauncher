@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <!-- ThemeMode (built-in Fluent theme) is still marked experimental in .NET 9/10. -->
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+
+    <Product>SSH Profile Launcher</Product>
+    <AssemblyTitle>SSH Profile Launcher</AssemblyTitle>
+    <Description>A lightweight profile manager and console launcher for Bitvise SSH Client. Not affiliated with Bitvise Limited.</Description>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Embedded so windows can show the icon in their title bar too. -->
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
+
+</Project>

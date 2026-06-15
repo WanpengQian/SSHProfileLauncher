@@ -1,0 +1,27 @@
+<Window x:Class="SSHProfileLauncher.Views.UsernamePromptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource Username_Title}" Height="190" Width="400"
+        Icon="/Assets/app.ico"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize" FontSize="13">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{DynamicResource Username_Msg}" TextWrapping="Wrap" Margin="0,0,0,10"/>
+        <TextBox   Grid.Row="1" x:Name="UserBox" Padding="4"
+                   InputMethod.IsInputMethodEnabled="False"/>
+        <CheckBox  Grid.Row="2" x:Name="RememberCheck" Content="{DynamicResource Username_Remember}"
+                   IsChecked="True" Margin="0,12,0,0"/>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,14,0,0">
+            <Button Content="{DynamicResource Btn_Confirm}" Click="Ok_Click" IsDefault="True" Padding="20,5" Margin="0,0,8,0"/>
+            <Button Content="{DynamicResource Btn_Cancel}" Click="Cancel_Click" IsCancel="True" Padding="20,5"/>
+        </StackPanel>
+    </Grid>
+</Window>
