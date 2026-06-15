@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Interop;
 using System.Windows.Media;
 using Microsoft.Win32;
 using SSHProfileLauncher.Localization;
@@ -168,8 +169,8 @@ public partial class MainWindow : Window
     private void New_Click(object sender, RoutedEventArgs e)
     {
         var bv = BitviseLauncher.ResolveBvSshPath(_library.BvSshPath) ?? "";
-        var draft = new Profile { Name = Loc.T("Default_NewProfile") };
-        var dlg = new ProfileEditWindow(draft, bv) { Owner = this };
+        var draft = new Profile { Name = "" };
+        var dlg = new ProfileEditWindow(draft, bv, isNew: true) { Owner = this };
         if (dlg.ShowDialog() == true)
         {
             _profiles.Add(draft);
@@ -190,7 +191,7 @@ public partial class MainWindow : Window
         }
         var bv = BitviseLauncher.ResolveBvSshPath(_library.BvSshPath) ?? "";
         var working = Selected.Clone();
-        var dlg = new ProfileEditWindow(working, bv) { Owner = this };
+        var dlg = new ProfileEditWindow(working, bv, isNew: false) { Owner = this };
         if (dlg.ShowDialog() == true)
         {
             var idx = _profiles.IndexOf(Selected);
@@ -224,6 +225,10 @@ public partial class MainWindow : Window
 
         var profile = ResolveUsername(Selected);
         if (profile is null) return; // user cancelled the username prompt
+
+        // Activate English input right before launching so the terminal inherits
+        // English (like mstsc inherits the launch-time input method).
+        Interop.Ime.SwitchToEnglish(new WindowInteropHelper(this).Handle);
 
         try
         {
@@ -301,6 +306,33 @@ public partial class MainWindow : Window
     }
 
     private void SearchBox_TextChanged(object sender, TextChangedEventArgs e) => _view?.Refresh();
+
+    private void Grid_GotKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+    {
+        // Entering the list via Tab: select the first row so the arrow keys work immediately.
+        if (Grid.SelectedItem is null && Grid.Items.Count > 0)
+            Grid.SelectedIndex = 0;
+    }
+
+    private void Grid_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        // Enter connects the selected row instead of moving to the next row.
+        if (e.Key == System.Windows.Input.Key.Enter)
+        {
+            e.Handled = true;
+            ConnectSelected();
+            return;
+        }
+
+        // Treat the whole list as one Tab stop: Tab/Shift+Tab leave the grid instead of
+        // walking cell-by-cell. Arrow keys fall through to normal row navigation.
+        if (e.Key == System.Windows.Input.Key.Tab)
+        {
+            bool back = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Shift) != 0;
+            (back ? LangBox : (System.Windows.Controls.Control)NewBtn).Focus();
+            e.Handled = true;
+        }
+    }
 
     private void Grid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {

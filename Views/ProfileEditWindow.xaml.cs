@@ -13,13 +13,38 @@ public partial class ProfileEditWindow : Window
     private readonly string _bvSshPath;
     private readonly BitviseLauncher _launcher = new();
 
+    private bool _suppress;          // ignore TextChanged logic during programmatic edits
+    private bool _nameFollowsHost;   // while true, Name mirrors Host (until the user edits Name)
+
     /// <summary>Working copy is mutated in place; caller passes a clone for "edit".</summary>
-    public ProfileEditWindow(Profile profile, string bvSshPath)
+    public ProfileEditWindow(Profile profile, string bvSshPath, bool isNew)
     {
         InitializeComponent();
         _profile = profile;
         _bvSshPath = bvSshPath;
+        Title = Loc.T(isNew ? "NewTitle" : "EditTitle");
+
+        _suppress = true;
         LoadFromProfile();
+        _suppress = false;
+
+        _nameFollowsHost = isNew;
+        if (isNew)
+            Loaded += (_, _) => HostBox.Focus();
+    }
+
+    private void HostBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (_suppress || !_nameFollowsHost) return;
+        _suppress = true;
+        NameBox.Text = HostBox.Text;   // default the name to the host/IP
+        _suppress = false;
+    }
+
+    private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (_suppress) return;
+        _nameFollowsHost = false;       // user customized the name; stop mirroring
     }
 
     private void LoadFromProfile()

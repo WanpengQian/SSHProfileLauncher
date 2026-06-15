@@ -40,6 +40,7 @@
 
     <!-- ProfileEditWindow -->
     <sys:String x:Key="EditTitle">Edit Profile</sys:String>
+    <sys:String x:Key="NewTitle">New Profile</sys:String>
     <sys:String x:Key="Lbl_Name">Name</sys:String>
     <sys:String x:Key="Lbl_Host">Host</sys:String>
     <sys:String x:Key="Lbl_Port">Port</sys:String>

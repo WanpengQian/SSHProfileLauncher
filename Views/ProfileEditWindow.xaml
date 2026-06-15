@@ -24,10 +24,12 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource Lbl_Name}" Margin="0,6,10,6" VerticalAlignment="Center"/>
-        <TextBox   Grid.Row="0" Grid.Column="1" x:Name="NameBox" Margin="0,4" Padding="3"/>
+        <TextBox   Grid.Row="0" Grid.Column="1" x:Name="NameBox" Margin="0,4" Padding="3"
+                   TextChanged="NameBox_TextChanged"/>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Lbl_Host}" Margin="0,6,10,6" VerticalAlignment="Center"/>
-        <TextBox   Grid.Row="1" Grid.Column="1" x:Name="HostBox" Margin="0,4" Padding="3"/>
+        <TextBox   Grid.Row="1" Grid.Column="1" x:Name="HostBox" Margin="0,4" Padding="3"
+                   TextChanged="HostBox_TextChanged"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource Lbl_Port}" Margin="0,6,10,6" VerticalAlignment="Center"/>
         <TextBox   Grid.Row="2" Grid.Column="1" x:Name="PortBox" Margin="0,4" Padding="3" HorizontalAlignment="Left" Width="100"/>

@@ -8,7 +8,7 @@
         <!-- Toolbar -->
         <Border DockPanel.Dock="Top" Background="#FAFAFA" BorderBrush="#E0E0E0" BorderThickness="0,0,0,1">
             <StackPanel Orientation="Horizontal" Margin="8,6">
-                <Button Content="{DynamicResource Btn_New}" Click="New_Click" Padding="12,4" Margin="0,0,6,0"/>
+                <Button x:Name="NewBtn" Content="{DynamicResource Btn_New}" Click="New_Click" Padding="12,4" Margin="0,0,6,0"/>
                 <Button Content="{DynamicResource Btn_Edit}" Click="Edit_Click" Padding="12,4" Margin="0,0,6,0"/>
                 <Button Content="{DynamicResource Btn_Delete}" Click="Delete_Click" Padding="12,4" Margin="0,0,6,0"/>
                 <Separator Margin="6,2" Width="1"/>
@@ -34,13 +34,49 @@
 
         <!-- Profile list -->
         <DataGrid x:Name="Grid" AutoGenerateColumns="False" IsReadOnly="True"
-                  SelectionMode="Single" CanUserAddRows="False" HeadersVisibility="Column"
+                  SelectionMode="Single" SelectionUnit="FullRow"
+                  CanUserAddRows="False" HeadersVisibility="Column"
                   GridLinesVisibility="Horizontal" RowHeight="26"
+                  KeyboardNavigation.TabNavigation="Once"
+                  GotKeyboardFocus="Grid_GotKeyboardFocus"
+                  PreviewKeyDown="Grid_PreviewKeyDown"
                   MouseDoubleClick="Grid_MouseDoubleClick" Margin="0">
+            <DataGrid.Resources>
+                <!-- Vertically center the text that DataGridTextColumn generates in each cell. -->
+                <Style TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.ColumnHeaderStyle>
+                <!-- Column headers shouldn't be Tab stops (they added 7 extra stops). -->
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="IsTabStop" Value="False"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
-                    <Setter Property="Padding" Value="6,0"/>
+                    <!-- No per-cell editing, so hide the focus rectangle — but keep the cell
+                         focusable so arrow-key row navigation still works. -->
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <!-- Replace the Fluent cell template so content fills the row and is
+                         vertically centered, and drop the offset current-cell focus box. -->
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell">
+                                <Border Background="{TemplateBinding Background}" Padding="6,0"
+                                        SnapsToDevicePixels="True">
+                                    <ContentPresenter VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>

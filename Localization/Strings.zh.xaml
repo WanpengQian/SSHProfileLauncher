@@ -40,6 +40,7 @@
 
     <!-- ProfileEditWindow -->
     <sys:String x:Key="EditTitle">编辑 Profile</sys:String>
+    <sys:String x:Key="NewTitle">新建 Profile</sys:String>
     <sys:String x:Key="Lbl_Name">名称</sys:String>
     <sys:String x:Key="Lbl_Host">主机</sys:String>
     <sys:String x:Key="Lbl_Port">端口</sys:String>
